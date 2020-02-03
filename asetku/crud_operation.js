@@ -17,7 +17,7 @@ $(document).ready(function(){
 	function listEmployee(){		
 		$.ajax({
 			type  : 'GET',
-			url   : 'http://localhost/apotik123/apoteker/show',
+			url   : 'http://localhost/apotik123/katseller/show',
 			async : false,
 			dataType : 'json',
 			success : function(data){
@@ -25,18 +25,18 @@ $(document).ready(function(){
 				var i;
 				for(i=0; i<data.length; i++){
 					html += '<tr id="'+data[i].id+'">'+
-							'<td>'+data[i].nojasa+'</td>'+
-							'<td>'+data[i].namasajasa+'</td>'+		                        
-							'<td>'+data[i].nominal+'</td>'+
+							'<td>'+data[i].jeniskontak+'</td>'+
+							'<td>'+data[i].marginresep+'</td>'+		                        
+							'<td>'+data[i].marginnonresep+'</td>'+
+							'<td>'+data[i].jenispembayaran+'</td>'+
 							'<td>'+data[i].status+'</td>'+
-							'<td>'+data[i].keterangan+'</td>'+
 							'<td style="text-align:center;">'+
 								'<a href="javascript:void(0);" class="editRecord" data-id="'+data[i].id+'" data-jeniskontak="'+data[i].jeniskontak+'" data-marginresep="'+data[i].marginresep+'" data-marginnonresep="'+data[i].marginnonresep+'" data-jenisbayar="'+data[i].jenispembayaran+'" data-status="'+data[i].status+'"><font color="BLUE">Edit</font></a>'+' '+
 								'<a href="javascript:void(0);" class="deleteRecord" data-id="'+data[i].id+'"><font color="RED">Delete</font></a>'+
 							'</td>'+
 							'</tr>';
 				}
-				$('#listApoteker').html(html);					
+				$('#listPembeli').html(html);					
 			}
 		});		
 	}

@@ -16,7 +16,7 @@ include ('basehome/homeheadnavaside.php');
     <section class="content">
       <div class="row">
         <div class="col-12">
-          JASA APOTEKER       
+          JENIS KATEGORI KONTAK         
           <!-- /.card -->
           <div class="card">
             <div class="card-header">
@@ -47,15 +47,15 @@ include ('basehome/homeheadnavaside.php');
               <table id="apotekerListing" class="table table-bordered table-striped table-hover" style="line-height: 1px">
                 <thead>
                 <tr>
-                  <th>No Jasa</th>                  
-                  <th>Nama Jasa</th>
-                  <th>Nominal</th>
+                  <th>Nama Kategori</th>                  
+                  <th>Margin Resep</th>
+                  <th>Margin Non Resep</th>
+                  <th>Jenis Pembayaran</th>
                   <th>Status</th>
-                  <th>Keterangan</th>
                   <th>ACTION</th>
                 </tr>
                 </thead>
-                <tbody id="listApoteker">                    
+                <tbody id="listPembeli">                    
                 </tbody>
               </table>
             </div>
