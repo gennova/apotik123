@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	listEmployee();		
-	var table = $('#employeeListing').dataTable({     
+	var table = $('#apotekerListing').dataTable({     
 		"bPaginate": true,
 		"searching": false,
 		"bInfo": false,
@@ -10,8 +10,9 @@ $(document).ready(function(){
 	}); 
 	// list all employee in datatable
 	function reload_table(){
-		location.reload(false);		
-		table.ajax.reload(null,false); //reload datatable ajax 
+		//location.reload(false);		
+		//table.ajax.reload(null,false); //reload datatable ajax 
+		oTable.api().ajax.reload();
 	}
 	function listEmployee(){		
 		$.ajax({
@@ -25,8 +26,8 @@ $(document).ready(function(){
 				for(i=0; i<data.length; i++){
 					html += '<tr id="'+data[i].id+'">'+
 							'<td>'+data[i].nojasa+'</td>'+
-							'<td>'+data[i].namajasa+'</td>'+
-							'<td>'+data[i].nominal+'</td>'+		                        
+							'<td>'+data[i].namajasa+'</td>'+		                        
+							'<td>'+data[i].nominal+'</td>'+
 							'<td>'+data[i].status+'</td>'+
 							'<td>'+data[i].keterangan+'</td>'+
 							'<td style="text-align:center;">'+
@@ -35,29 +36,33 @@ $(document).ready(function(){
 							'</td>'+
 							'</tr>';
 				}
-				$('#listRecords').html(html);					
+				$('#listApoteker').html(html);					
 			}
 		});		
 	}
 	// save new employee record
-	$('#saveEmpForm').submit('click',function(){
+	$('#saveKategoriPembeliForm').submit('click',function(){
 		console.log("Insert method");
-		var noJasa = $('#nojasa').val();
-		var namaJasa = $('#namajasa').val();
-		var nominal = $('#nominal').val();
-		var status = $('#status').val();
-		var keterangan = $('#keterangan').val();
+		var JENISKONTAK = $('#jeniskontak').val();
+		var MARGINRESEP = $('#marginresep').val();
+		var MARGINNONRESEP = $('#marginnonresep').val();
+		var JENISBAYAR = $('#jenisbayar').val();
+		var STATUS = $( "#statusjenis option:selected" ).val();	
+		console.log(JENISKONTAK);
+		console.log(MARGINRESEP);
+		console.log(MARGINNONRESEP);
+		console.log(JENISBAYAR);	
+		console.log(STATUS);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/apoteker/save",
+			url  : "http://localhost/apotik123/katseller/save",
 			dataType : "JSON",
-			data : {nojasa:noJasa, namajasa:namaJasa, nominal:nominal, status:status, keterangan:keterangan},
+			data : {jeniskontak:JENISKONTAK, marginresep:MARGINRESEP, marginnonresep:MARGINNONRESEP,jenisbayar:JENISBAYAR,status:STATUS},
 			success: function(data){
-				$('#nojasa').val("");
-				$('#namajasa').val("");
-				$('#nominal').val("");
-				$('#status').val("");
-				$('#keterangan').val("");
+				$('#jeniskontak').val("");
+				$('#jenisbayar').val("");
+				$('#marginresep').val("");
+				$('#marginnonresep').val("");
 				$('#modal-xl').modal('hide');
 				listEmployee();
 				reload_table();
@@ -66,36 +71,39 @@ $(document).ready(function(){
 		return false;
 	});
 	// show edit modal form with emp data
-	$('#listRecords').on('click','.editRecord',function(){
-		console.log("Nomor jasa "+$(this).data('nojasa'));
-		console.log("Nama jasa "+$(this).data('status'));
+	$('#listPembeli').on('click','.editRecord',function(){
 		$('#modal-update').modal('show');
-		$("#empId").val($(this).data('id'));
-		$("#njasa").val($(this).data('nojasa'));
-		$("#nmjasa").val($(this).data('namajasa'));
-		$("#nnominal").val($(this).data('nominal'));
-		$("#nstat").val($(this).data('status'));
-		$("#nket").val($(this).data('keterangan'));
+		$("#pembIDInput").val($(this).data('id'));
+		$("#jeniskontaku").val($(this).data('jeniskontak'));
+		$("#jenisbayaru").val($(this).data('jenisbayar'));
+		$("#marginresepu").val($(this).data('marginresep'));
+		$("#marginnonresepu").val($(this).data('marginnonresep'));
+		$("#statusjenisu").val($(this).data('status'));
 	});
 	// save edit record
-	 $('#editEmpForm').on('submit',function(){
-	 	var empId = $('#empId').val();
-		var nojasa = $('#njasa').val();
-		var namajasa = $('#nmjasa').val();
-		var nominal = $('#nnominal').val();
-		var status = $('#nstat').val();
-		var keterangan = $('#nket').val();			
+	 $('#editKategoriPembeliForm').on('submit',function(){
+	 	console.log("Update "+$('#pembIDInput').val())
+	 	var pembID = $('#pembIDInput').val();
+		var JENISKONTAK = $('#jeniskontaku').val();
+		var MARGINRESEP = $('#marginresepu').val();
+		var MARGINNONRESEP = $('#marginnonresepu').val();
+		var JENISBAYAR = $('#jenisbayaru').val();
+		var STATUS = $( "#statusjenisu option:selected" ).val();	
+		console.log(JENISKONTAK);
+		console.log(MARGINRESEP);
+		console.log(MARGINNONRESEP);
+		console.log(JENISBAYAR);	
+		console.log(STATUS);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/apoteker/update",
+			url  : "http://localhost/apotik123/katseller/update",
 			dataType : "JSON",
-			data : {id:empId,nojasa:nojasa, namajasa:namajasa, nominal:nominal, status:status, keterangan:keterangan},
+			data : {id:pembID,jeniskontak:JENISKONTAK, marginresep:MARGINRESEP, marginnonresep:MARGINNONRESEP,jenisbayar:JENISBAYAR,status:STATUS},
 			success: function(data){
-				$('#nojasa').val("");
-				$('#namajasa').val("");
-				$('#nominal').val("");
-				$('#status').val("");
-				$('#keterangan').val("");
+				$('#jeniskontak').val("");
+				$('#jenisbayar').val("");
+				$('#marginresep').val("");
+				$('#marginnonresep').val("");
 				$('#modal-update').modal('hide');
 				listEmployee();
 				reload_table();
@@ -104,24 +112,24 @@ $(document).ready(function(){
 		return false;
 	});
 	// show delete form
-	$('#listRecords').on('click','.deleteRecord',function(){
-		var empId = $(this).data('id');          
-		console.log("EMP ID "+empId);  
+	$('#listPembeli').on('click','.deleteRecord',function(){
+		var pembID = $(this).data('id');          
+		console.log("Kategori Pembeli ID "+pembID);  
 		$('#modal-default').modal('show');
-		$('#ApotekerIDInput').val(empId);
+		$('#kategoriPembeliID').val(pembID);
 	});
 	// delete emp record
-	 $('#deleteEmpForm').on('submit',function(){
-		var apotekerID = $('#ApotekerIDInput').val();
-		console.log("Deleted "+apotekerID);
+	 $('#deleteKategoriPembeliForm').on('submit',function(){
+		var pembID = $('#kategoriPembeliID').val();
+		console.log("Deleted "+pembID);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/apoteker/delete",
+			url  : "http://localhost/apotik123/katseller/delete",
 			dataType : "JSON",  
-			data : {id:apotekerID},
+			data : {id:pembID},
 			success: function(data){
-				$("#"+apotekerID).remove();
-				$('#ApotekerIDInput').val("");
+				$("#"+pembID).remove();
+				$('#kategoriPembeliID').val("");
 				$('#modal-default').modal('hide');
 				listEmployee();
 				reload_table();
