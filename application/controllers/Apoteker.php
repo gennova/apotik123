@@ -9,7 +9,7 @@ class Apoteker extends CI_Controller{
 	function index(){
 		$this->load->view('apoteker');
 	}
-	function showING(){
+	function show(){
 		$data=$this->M_apoteker->employeeList();
 		echo json_encode($data);
 	}
