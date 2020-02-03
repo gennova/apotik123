@@ -2,7 +2,7 @@
 <html>
 <?php 
 //include('basehome/headdata.php'); 
-include ('basehome/homeheadnavaside.php');
+include ('basehome/masterbarangnav.php');
 ?>
 <style type="text/css">
   table {

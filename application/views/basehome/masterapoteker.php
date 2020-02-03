@@ -173,7 +173,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-close">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -215,7 +215,7 @@
               </p>
             </a>
               <ul class="nav nav-treeview">
-              <li class="nav-item link">
+              <li class="nav-item link active">
                 <a href="<?php echo base_url('eceran'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Eceran</p>
@@ -266,8 +266,8 @@
             </ul>
           </li>         
           
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link  active">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Data Master
@@ -282,7 +282,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('apoteker'); ?>" class="nav-link">
+                <a href="<?php echo base_url('apoteker'); ?>" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jasa Apoteker</p>
                 </a>
