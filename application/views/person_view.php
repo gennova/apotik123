@@ -111,37 +111,37 @@ table {
         <?php echo validation_errors(); ?> 
         <?php echo form_open('transaksi/save'); ?>
         <div class="col-sm-6" style="padding: 1px">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
              <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px; width: 100%">KODE TRX</label> </div>
         <div class="form-group">                            
-              <div class="col-sm-9" style="padding: 1px">
+              <div class="col-sm-8" style="padding: 1px">
                 <input name="kodetransaksinya" id="trxcode" placeholder="Pelanggan" class="form-control" type="text"  value="<?php echo $invoice;?>" readonly>
             </div>
         </div> 
         <div class="col-sm-12" style="padding-top: 10px"></div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
              <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Pelanggan</label> </div>
         <div class="form-group">                            
-              <div class="col-sm-9" style="padding: 1px">
+              <div class="col-sm-8" style="padding: 1px">
                 <input name="namapelanggan" placeholder="Pelanggan" id="namapelanggan" class="form-control" type="text">
             </div>
-        </div> 
-        <div class="col-sm-3">
-            <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Tipe DO</label> </div>
+        </div>         
+        <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Cara Bayar</label> </div>
         <div class="form-group">                            
-              <div class="col-sm-9" style="padding: 1px">
-                <input name="tipedo" placeholder="Tipe DO" class="form-control" type="text">
-            </div>
-        </div> 
-        <div class="col-sm-3"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Cara Bayar</label> </div>
-        <div class="form-group">                            
-              <div class="col-sm-9" style="padding: 1px">
+              <div class="col-sm-8" style="padding: 1px">
                 <input name="carabayar" placeholder="Cara bayar" class="form-control" type="text">
             </div>
         </div> 
-        <div class="col-sm-3"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Keterangan</label> </div>
+        <div class="col-sm-4">
+            <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Tracking Code</label> </div>
         <div class="form-group">                            
-              <div class="col-sm-9" style="padding: 1px">
+              <div class="col-sm-8" style="padding: 1px">
+                <input name="tipedo" placeholder="Tipe DO" class="form-control" type="text">
+            </div>
+        </div> 
+        <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Keterangan</label> </div>
+        <div class="form-group">                            
+              <div class="col-sm-8" style="padding: 1px">
                 <input name="keterangan" placeholder="Keterangan" class="form-control" type="text">
             </div>
         </div> 
@@ -392,7 +392,7 @@ xmlhttp.onreadystatechange = function() {
   }
 };
 var trx= document.getElementById('trxcode').value;
-xmlhttp.open("GET", "http://localhost/apotik/eceran/ajax_list/"+trx, true);
+xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
 xmlhttp.send();
                 reload_table();
             }
@@ -444,7 +444,7 @@ function delete_person(id)
                 }
             };
             var trx= document.getElementById('trxcode').value;
-            xmlhttp.open("GET", "http://localhost/apotik/eceran/ajax_list/"+trx, true);
+            xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
             xmlhttp.send();
             
             reload_table();
