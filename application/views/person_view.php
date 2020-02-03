@@ -251,7 +251,7 @@ var save_method; //for save method string
 var table;
 
 $(document).ready(function() {
-    //console.log('DOING THIS FIRST');
+    console.log('DOING THIS FIRST');
     //datatables
     //var data='TRX3101200001';
     //console.log('DATA '+data);
@@ -520,6 +520,7 @@ xmlhttp.onreadystatechange = function() {
   }
 };
 var trx= document.getElementById('trxcode').value;
+console.log("KODE TRANSAKSI "+trx);
 xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
 xmlhttp.send();
 </script>
