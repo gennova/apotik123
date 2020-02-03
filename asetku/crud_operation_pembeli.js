@@ -16,7 +16,7 @@ $(document).ready(function(){
 	}
 	function listEmployee(){		
 		$.ajax({
-			type  : 'ajax',
+			type  : 'GET',
 			url   : 'http://localhost/apotik123/katseller/show',
 			async : false,
 			dataType : 'json',
