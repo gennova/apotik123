@@ -520,7 +520,7 @@ xmlhttp.onreadystatechange = function() {
   }
 };
 var trx= document.getElementById('trxcode').value;
-xmlhttp.open("GET", "http://localhost/apotik/eceran/ajax_list/"+trx, true);
+xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
 xmlhttp.send();
 </script>
 
