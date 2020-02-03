@@ -36,7 +36,7 @@ $(document).ready(function(){
 							'</td>'+
 							'</tr>';
 				}
-				$('#listPembeli').html(html);					
+				$('#listApoteker').html(html);					
 			}
 		});		
 	}
