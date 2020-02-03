@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	listEmployee();		
+	listApoteker();		
 	var table = $('#apotekerListing').dataTable({     
 		"bPaginate": true,
 		"searching": true,
@@ -10,11 +10,11 @@ $(document).ready(function(){
 	}); 
 	// list all employee in datatable
 	function reload_table(){
-		//location.reload(false);		
-		//table.ajax.reload(null,false); //reload datatable ajax 
-		oTable.api().ajax.reload();
+		location.reload(false);		
+		table.ajax.reload(null,false); //reload datatable ajax 
+		//oTable.api().ajax.reload();
 	}
-	function listEmployee(){		
+	function listApoteker(){		
 		$.ajax({
 			type  : 'GET',
 			url   : 'http://localhost/apotik123/apoteker/show',
@@ -31,108 +31,109 @@ $(document).ready(function(){
 							'<td>'+data[i].status+'</td>'+
 							'<td>'+data[i].keterangan+'</td>'+
 							'<td style="text-align:center;">'+
-								'<a href="javascript:void(0);" class="editRecord" data-id="'+data[i].id+'" data-jeniskontak="'+data[i].jeniskontak+'" data-marginresep="'+data[i].marginresep+'" data-marginnonresep="'+data[i].marginnonresep+'" data-jenisbayar="'+data[i].jenispembayaran+'" data-status="'+data[i].status+'"><font color="BLUE">Edit</font></a>'+' '+
+								'<a href="javascript:void(0);" class="editRecord" data-id="'+data[i].id+'" data-nojasa="'+data[i].nojasa+'" data-namajasa="'+data[i].namajasa+'" data-nominal="'+data[i].nominal+'" data-status="'+data[i].status+'" data-keterangan="'+data[i].keterangan+'"><font color="BLUE">Edit</font></a>'+' '+
 								'<a href="javascript:void(0);" class="deleteRecord" data-id="'+data[i].id+'"><font color="RED">Delete</font></a>'+
 							'</td>'+
 							'</tr>';
 				}
-				$('#listPembeli').html(html);					
+				$('#listApoteker').html(html);					
 			}
 		});		
 	}
 	// save new employee record
-	$('#saveKategoriPembeliForm').submit('click',function(){
+	$('#saveApotekerForm').submit('click',function(){
 		console.log("Insert method");
-		var JENISKONTAK = $('#jeniskontak').val();
-		var MARGINRESEP = $('#marginresep').val();
-		var MARGINNONRESEP = $('#marginnonresep').val();
-		var JENISBAYAR = $('#jenisbayar').val();
-		var STATUS = $( "#statusjenis option:selected" ).val();	
-		console.log(JENISKONTAK);
-		console.log(MARGINRESEP);
-		console.log(MARGINNONRESEP);
-		console.log(JENISBAYAR);	
-		console.log(STATUS);
+		var NOJASA = $('#nojasa').val();
+		var NAMAJASA = $('#namajasa').val();
+		var NOMINAL = $('#nominal').val();
+		var STATUS = $( "#status option:selected" ).val();	
+		var KETERANGAN = $('#keterangan').val();
+		console.log(NOJASA);
+		console.log(NAMAJASA);
+		console.log(NOMINAL);
+		console.log(STATUS);	
+		console.log(KETERANGAN);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/katseller/save",
+			url  : "http://localhost/apotik123/apoteker/save",
 			dataType : "JSON",
-			data : {jeniskontak:JENISKONTAK, marginresep:MARGINRESEP, marginnonresep:MARGINNONRESEP,jenisbayar:JENISBAYAR,status:STATUS},
+			data : {nojasa:NOJASA, namajasa:NAMAJASA, nominal:NOMINAL,status:STATUS,keterangan:KETERANGAN},
 			success: function(data){
-				$('#jeniskontak').val("");
-				$('#jenisbayar').val("");
-				$('#marginresep').val("");
-				$('#marginnonresep').val("");
+				$('#nojasa').val("");
+				$('#namajasa').val("");
+				$('#nominal').val("");
+				$('#keterangan').val("");
 				$('#modal-xl').modal('hide');
-				listEmployee();
+				listApoteker();
 				reload_table();
 			}
 		});
 		return false;
 	});
 	// show edit modal form with emp data
-	$('#listPembeli').on('click','.editRecord',function(){
+	$('#listApoteker').on('click','.editRecord',function(){
 		$('#modal-update').modal('show');
-		$("#pembIDInput").val($(this).data('id'));
-		$("#jeniskontaku").val($(this).data('jeniskontak'));
-		$("#jenisbayaru").val($(this).data('jenisbayar'));
-		$("#marginresepu").val($(this).data('marginresep'));
-		$("#marginnonresepu").val($(this).data('marginnonresep'));
-		$("#statusjenisu").val($(this).data('status'));
+		$("#apotekerid").val($(this).data('id'));
+		$("#nojasau").val($(this).data('nojasa'));
+		$("#namajasau").val($(this).data('namajasa'));
+		$("#nominalu").val($(this).data('nominal'));
+		$("#statusu").val($(this).data('status'));
+		$("#keteranganu").val($(this).data('keterangan'));
 	});
 	// save edit record
-	 $('#editKategoriPembeliForm').on('submit',function(){
+	 $('#editApotekerForm').on('submit',function(){
 	 	console.log("Update "+$('#pembIDInput').val())
-	 	var pembID = $('#pembIDInput').val();
-		var JENISKONTAK = $('#jeniskontaku').val();
-		var MARGINRESEP = $('#marginresepu').val();
-		var MARGINNONRESEP = $('#marginnonresepu').val();
-		var JENISBAYAR = $('#jenisbayaru').val();
-		var STATUS = $( "#statusjenisu option:selected" ).val();	
-		console.log(JENISKONTAK);
-		console.log(MARGINRESEP);
-		console.log(MARGINNONRESEP);
-		console.log(JENISBAYAR);	
-		console.log(STATUS);
+	 	var aptID = $('#apotekerid').val();
+		var NOJASA = $('#nojasau').val();
+		var NAMAJASA = $('#namajasau').val();
+		var NOMINAL = $('#nominalu').val();
+		var STATUS = $( "#statusu option:selected" ).val();	
+		var KETERANGAN = $('#keteranganu').val();
+		console.log(NOJASA);
+		console.log(NAMAJASA);
+		console.log(NOMINAL);
+		console.log(STATUS);	
+		console.log(KETERANGAN);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/katseller/update",
+			url  : "http://localhost/apotik123/apoteker/update",
 			dataType : "JSON",
-			data : {id:pembID,jeniskontak:JENISKONTAK, marginresep:MARGINRESEP, marginnonresep:MARGINNONRESEP,jenisbayar:JENISBAYAR,status:STATUS},
+			data : {id:aptID,nojasa:NOJASA, namajasa:NAMAJASA, nominal:NOMINAL,status:STATUS,keterangan:KETERANGAN},
 			success: function(data){
-				$('#jeniskontak').val("");
-				$('#jenisbayar').val("");
-				$('#marginresep').val("");
-				$('#marginnonresep').val("");
-				$('#modal-update').modal('hide');
-				listEmployee();
+				$('apotekerid').val("");
+				$('#nojasa').val("");
+				$('#namajasa').val("");
+				$('#nominal').val("");
+				$('#keterangan').val("");
+				$('#modal-xl').modal('hide');
+				listApoteker();
 				reload_table();
 			}
 		});
 		return false;
 	});
 	// show delete form
-	$('#listPembeli').on('click','.deleteRecord',function(){
-		var pembID = $(this).data('id');          
-		console.log("Kategori Pembeli ID "+pembID);  
+	$('#listApoteker').on('click','.deleteRecord',function(){
+		var aptID = $(this).data('id');          
+		console.log("Apoteker ID "+aptID);  
 		$('#modal-default').modal('show');
-		$('#kategoriPembeliID').val(pembID);
+		$('#apotekerid').val(aptID);
 	});
 	// delete emp record
-	 $('#deleteKategoriPembeliForm').on('submit',function(){
-		var pembID = $('#kategoriPembeliID').val();
-		console.log("Deleted "+pembID);
+	 $('#deleteApotekerForm').on('submit',function(){
+		var aptID = $('#apotekerid').val();
+		console.log("Deleted "+aptID);
 		$.ajax({
 			type : "POST",
-			url  : "http://localhost/apotik123/katseller/delete",
+			url  : "http://localhost/apotik123/apoteker/delete",
 			dataType : "JSON",  
-			data : {id:pembID},
+			data : {id:aptID},
 			success: function(data){
-				$("#"+pembID).remove();
-				$('#kategoriPembeliID').val("");
+				$("#"+aptID).remove();
+				$('#apotekerid').val("");
 				$('#modal-default').modal('hide');
-				listEmployee();
-				reload_table();
+				listApoteker();
+				location.reload(true);
 			}
 		});
 		return false;
