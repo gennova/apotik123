@@ -16,7 +16,7 @@ include ('basehome/homeheadnavaside.php');
     <section class="content">
       <div class="row">
         <div class="col-12">
-          JENIS KATEGORI KONTAK         
+          JASA APOTEKER       
           <!-- /.card -->
           <div class="card">
             <div class="card-header">
