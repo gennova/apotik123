@@ -25,11 +25,11 @@ $(document).ready(function(){
 				var i;
 				for(i=0; i<data.length; i++){
 					html += '<tr id="'+data[i].id+'">'+
-							'<td>'+data[i].jeniskontak+'</td>'+
-							'<td>'+data[i].marginresep+'</td>'+		                        
-							'<td>'+data[i].marginnonresep+'</td>'+
-							'<td>'+data[i].jenispembayaran+'</td>'+
+							'<td>'+data[i].nojasa+'</td>'+
+							'<td>'+data[i].namajasa+'</td>'+		                        
+							'<td>'+data[i].nominal+'</td>'+
 							'<td>'+data[i].status+'</td>'+
+							'<td>'+data[i].keterangan+'</td>'+
 							'<td style="text-align:center;">'+
 								'<a href="javascript:void(0);" class="editRecord" data-id="'+data[i].id+'" data-jeniskontak="'+data[i].jeniskontak+'" data-marginresep="'+data[i].marginresep+'" data-marginnonresep="'+data[i].marginnonresep+'" data-jenisbayar="'+data[i].jenispembayaran+'" data-status="'+data[i].status+'"><font color="BLUE">Edit</font></a>'+' '+
 								'<a href="javascript:void(0);" class="deleteRecord" data-id="'+data[i].id+'"><font color="RED">Delete</font></a>'+
