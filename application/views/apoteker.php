@@ -206,7 +206,7 @@ input[type=text]:focus {
 </form>
 </div>
 
-  <?php include('basehome/footerdata.php'); ?>
+<?php include('basehome/footerdata.php'); ?>
 </body>
 </html>
 
