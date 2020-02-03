@@ -26,7 +26,7 @@ $(document).ready(function(){
 				for(i=0; i<data.length; i++){
 					html += '<tr id="'+data[i].id+'">'+
 							'<td>'+data[i].nojasa+'</td>'+
-							'<td>'+data[i].namajasa+'</td>'+		                        
+							'<td>'+data[i].namasajasa+'</td>'+		                        
 							'<td>'+data[i].nominal+'</td>'+
 							'<td>'+data[i].status+'</td>'+
 							'<td>'+data[i].keterangan+'</td>'+
@@ -36,7 +36,7 @@ $(document).ready(function(){
 							'</td>'+
 							'</tr>';
 				}
-				$('#listApoteker').html(html);					
+				$('#listPembeli').html(html);					
 			}
 		});		
 	}
