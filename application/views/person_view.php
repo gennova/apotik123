@@ -395,7 +395,8 @@ xmlhttp.onreadystatechange = function() {
   }
 };
 var trx= document.getElementById('trxcode').value;
-xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
+//<?php echo site_url('eceran/ajax_list/'.$invoice.'')?>//
+xmlhttp.open("GET", "<?php echo site_url('eceran/ajax_list/')?>"+trx, true);
 xmlhttp.send();
                 reload_table();
             }
@@ -447,7 +448,7 @@ function delete_person(id)
                 }
             };
             var trx= document.getElementById('trxcode').value;
-            xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
+            xmlhttp.open("GET", "<?php echo site_url('eceran/ajax_list/')?>"+trx, true);
             xmlhttp.send();
             
             reload_table();
@@ -524,7 +525,7 @@ xmlhttp.onreadystatechange = function() {
 };
 var trx= document.getElementById('trxcode').value;
 console.log("KODE TRANSAKSI "+trx);
-xmlhttp.open("GET", "http://localhost/apotik123/eceran/ajax_list/"+trx, true);
+xmlhttp.open("GET", "<?php echo site_url('eceran/ajax_list/')?>"+trx, true);
 xmlhttp.send();
 </script>
 
