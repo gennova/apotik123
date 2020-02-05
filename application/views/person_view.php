@@ -679,7 +679,7 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
             var id=$(this).val();
             console.log("ID "+id);
             $.ajax({
-                url : "http://localhost/apotik123/hargaproduk/get_hproduk_bybarcode/"+id,
+                url : "<?php echo site_url('hargaproduk/get_hproduk_bybarcode/')?>"+id,
                 method : "POST",
                 async : false,
                 dataType : 'json',
