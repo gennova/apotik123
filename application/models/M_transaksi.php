@@ -38,4 +38,13 @@ class M_transaksi extends CI_Model
         $this->db->insert('transaksi', $data);
          $this->M_invoice->simpan_invoice($post['kodetransaksinya']);
 	}
+
+  function getDetailTransaksiByID($trx){
+    $this->db->select('*');
+    $this->db->from('transaksi');
+    $this->db->join('detailtransaksi','transaksi.kodetransaksi=detailtransaksi.transaksi');
+    $this->db->join('produk','detailtransaksi.barcode=produk.barcode');
+    $this->db->where('transaksi.kodetransaksi',$trx);
+    return  $this->db->get()->result();
+  }
 }

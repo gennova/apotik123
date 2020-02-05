@@ -51,21 +51,18 @@ include ('basehome/homeheadnavaside.php');
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Transaksi</th>
-                  <th>Pelanggan</th>
-                  <th>Cara Bayar</th>
-                  <th>Tracking Code</th>
-                  <th>Total Harga</th>
-                  <th>Kasir</th>
-                  <th>Keterangan</th>
-                  <th>ACTION</th>
+                  <th>Nama Produk</th>
+                  <th>Harga Jual</th>
+                  <th>Qty</th>
+                  <th>Diskon</th>
+                  <th>Total Bayar</th>
                 </tr>
                 </thead>
                 <tbody>
                   <?php
                   $i=1;
-                  foreach ($transaksis as $key) {                  	
-                    echo "<tr><td>".$i."</td><td>".$key->kodetransaksi."</td><td>".$key->pelanggan."</td><td>".$key->carabayar."</td><td>".$key->tipedo."</td><td>Rp. ".number_format($key->totalharga)."</td><td>".$key->nama."</td><td>".$key->keterangan."</td><td><a href='".base_url('transaksi/lihatdetailtrxbyid/').$key->kodetransaksi."'>LIHAT DETAIL</a></td></tr>";
+                  foreach ($detailtransaksis as $key) {                  	
+                    echo "<tr><td>".$i."</td><td>".$key->namaproduk."</td><td>".$key->hargajual."</td><td>".$key->qty."</td><td>".$key->diskon."</td><td>Rp. ".number_format($key->totalbayar)."</td></tr>";
                     $i++;
                   }
                   ?>
