@@ -155,7 +155,7 @@ table {
         </div>  
         
         <div class="col-sm-6">
-        TOTAL <h1><input type="text" name="totalbayar" id="totalbayar"><h1>
+        TOTAL <h1><input type="text" name="totalbayar" id="totalbayar" readonly="true"><h1>
         </div>   
         
         <?php         
@@ -179,7 +179,7 @@ table {
 
                         <div class="form-group">                            
                             <div class="col-md-1" style="padding: 1px">
-                                <input name="middleName" ng-model="stok" id="stoka" placeholder="Stok" class="form-control" type="text">
+                                <input name="middleName" ng-model="stok" id="stoka" placeholder="Stok" class="form-control" value="{{totbayar}}" type="text">
                             </div>
                         </div>
                         <div class="form-group">                           
@@ -194,21 +194,21 @@ table {
                             </div>                            
                         </div>
                         <div class="col-md-1" style="padding: 1px">
-                               <button type="button" id="btnSave" onclick="minus()" class="btn btn-primary">-</button> <button type="button" id="btnSave" onclick="added()" class="btn btn-primary">+</button>
+                               <button type="button" id="btnSave" onclick="minus()" class="btn btn-primary" tabindex="-1">-</button> <button type="button" id="btnSave" onclick="added()" class="btn btn-primary" tabindex="-1">+</button>
                             </div>
                         <div class="form-group">                            
                             <div class="col-md-2" style="padding: 1px">
-                                <input name="address" id="diskoninput" placeholder="Diskon" class="form-control" type="text" ng-model="diskonnya" onmousedown="mouseDown()" onmouseup="mouseUp()" onmouseout="proses()">                               
+                                <input name="address" id="diskoninput" placeholder="Diskon" class="form-control" type="text" ng-model="diskonnya" onmousedown="mouseDown()" onmouseup="mouseUp()" onmouseout="proses()" onfocus="proses()" onchange="proses()">                               
                             </div>
                         </div>
                         <div class="form-group">                            
                             <div class="col-md-1" style="padding: 1px">
-                                <input name="dob" id="dob" value={{diskonnya*jumlah}} class="form-control"  placeholder="Total" type="text">
+                                <input name="dob" id="dob" value="{{jumlah}}" class="form-control"  placeholder="Total" type="text">
                             </div>
                         </div>
 
                             <div class="col-md-1" style="padding: 1px">
-                               <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">ADD</button>
+                               <button type="button" id="btnSave" onclick="save()" onkeydown="save()" class="btn btn-primary">ADD</button>
                             </div>
                         </div>  <!-- end Angular App controller -->
                     </div>                   
@@ -283,7 +283,7 @@ var save_method; //for save method string
 var table;
 
 $(document).ready(function() {
-    console.log('DOING THIS FIRST');
+    console.log('DOING THIS FIRST');    
     //datatables
     //var data='TRX3101200001';
     //console.log('DATA '+data);
@@ -425,7 +425,13 @@ xmlhttp.send();
     });
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
-    $('.help-block').empty(); // clear error string   
+    $('.help-block').empty(); // clear error string  
+
+    $("#barcodenya").select2("val", "");
+    $('barcodenya').prop('selectedIndex', 0);
+    $('#barcodenya').focus() 
+    $('#barcodenya').click()
+    document.getElementById('barcodenya').select(); 
 }
 
 function delete_person(id)
@@ -725,8 +731,27 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
          }
          //your keyCode contains the key code, F1 to F12 
          //is among 112 and 123. Just it.
-         //console.log(keyCode);       
+         //console.log(keyCode);     
+
     });
+
+    //$("#dob").focus();  
+    //document.getElementById('dob').select();
 });
      
 </script>
+
+<script>
+
+window.onload = function () {
+        console.log('we working hereby');   
+        $('#barcodenya').focus() 
+        $('#barcodenya').click()
+        document.getElementById('barcodenya').select();
+        //$('#barcodenya').val("10013");
+        //$("#barcodenya").focus(); 
+        
+};
+
+</script>
+</html>
