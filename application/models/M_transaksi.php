@@ -33,7 +33,8 @@ class M_transaksi extends CI_Model
   							'tipedo' =>  $post['tipedo'],
   							'carabayar' => $post['carabayar'],
   							'keterangan' => $post['keterangan'],
-  							'totalharga' => $post['totalbayarnonformat']);
+  							'totalharga' => $post['totalbayarnonformat'],
+                'idkasir' =>$post['idkasir']);
         $this->db->insert('transaksi', $data);
          $this->M_invoice->simpan_invoice($post['kodetransaksinya']);
 	}

@@ -129,14 +129,17 @@ table {
         <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Cara Bayar</label> </div>
         <div class="form-group">                            
               <div class="col-sm-8" style="padding: 1px">
-                <input name="carabayar" placeholder="Cara bayar" class="form-control" type="text">
+                <select class="form-control" name="carabayar">
+                    <option value="CASH">CASH</option><option value="DEBIT">DEBIT</option><option value="CREDIT">CREDIT</option>
+                </select>
+                
             </div>
         </div> 
         <div class="col-sm-4">
             <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Tracking Code</label> </div>
         <div class="form-group">                            
               <div class="col-sm-8" style="padding: 1px">
-                <input name="tipedo" placeholder="Tipe DO" class="form-control" type="text">
+                <input name="tipedo" placeholder="Tracking Code" class="form-control" type="text">
             </div>
         </div> 
         <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Keterangan</label> </div>
@@ -145,7 +148,7 @@ table {
                 <input name="keterangan" placeholder="Keterangan" class="form-control" type="text">
             </div>
         </div> 
-                             &nbsp &nbsp &nbsp <input type="hidden" name="totalbayarnonformat" id="totalbayarnonformat">   
+                             &nbsp &nbsp &nbsp <input type="hidden" name="totalbayarnonformat" id="totalbayarnonformat">   <input type="hidden" name="idkasir" id="idkasir" value="<?php echo $this->session->userdata('iduser'); ?>">   
         <div class="col-md-3" style="padding: 0px;padding-left: 20px">
             <button type="submit" id="btnSave" class="btn btn-success">&nbsp &nbsp &nbsp &nbsp Save&nbsp &nbsp &nbsp &nbsp</button>            
         </div>

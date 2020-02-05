@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') or exit ('No direct script allowed');
 
-class M_supplier extends CI_Model{
-	private $_table="supplier";
+class M_laporanjual extends CI_Model{
+	private $_table="transaksi";
 	public $produk_id;
 
 	public function rules()
@@ -11,17 +11,10 @@ class M_supplier extends CI_Model{
             ['field' => 'kodesupplier',
             'label' => 'Supplier',
             'rules' => 'required'],
-
-            ['field' => 'namasupplier',
-            'label' => 'Nama Supplier',
-            'rules' => 'required'],
-
-            ['field' => 'namasales',
-            'label' => 'Nama Sales',
-            'rules' => 'required']
         ];
     }
-	function getALlSupplier(){
+	function getALlTransaksi(){
+    $this->db->join('ajax_login_ci','transaksi.idkasir=ajax_login_ci.id');
 		return $this->db->get($this->_table)->result();
 	}
 
@@ -38,10 +31,12 @@ class M_supplier extends CI_Model{
         $this->db->insert($this->_table, $data);
 	}
 
-	public function getSupplierByID($id){
+	public function getLaporanPenjualanDetailByID($id){
     	//return $this->db->get('produk')->result();
     $this->db->select('*');
 		$this->db->from($this->_table);
+    $this->db->join('detailtransaksi','transaksi.kodetransaksi=detailtransaksi.transaksi');
+    $this->db->join('produk','transaksi.barcode=produk.barcode');
 		//$this->db->join('hargaproduk', 'produk.barcode=hargaproduk.barcode','left');
 		$this->db->where('id',$id);
 		//$this->db->group_by('produk.produk_id');		
@@ -49,7 +44,8 @@ class M_supplier extends CI_Model{
 		//return $this->db->get()->result();
 		// if return row use this $produks->barcode
 		//if return row_array user this $produks['barcode'] in view
-		return $this->db->get()->row_array(); // for single row without foreach 
+		//return $this->db->get()->row_array(); // for single row without foreach 
+    return $this->db->get()->result();
     }
 
      public function update($id){
