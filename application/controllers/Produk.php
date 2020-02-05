@@ -90,4 +90,9 @@ class Produk extends CI_Controller{
 		$data=$this->M_produk->get_produkbyid($id);
 		echo json_encode($data);
 	}
+
+	function get_kemasanproduk_bybarcode($barcode){		
+		$data=$this->M_produk->get_kemasanbybarcode($barcode);
+		echo json_encode($data);
+	}
 }
