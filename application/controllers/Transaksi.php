@@ -41,4 +41,8 @@ class Transaksi extends CI_Controller
 		$this->load->helper(array('form', 'url'));
         $this->load->view('v_detail_transaksi',$data); 
 	}
+
+	function getRunningOrder($idUser){
+		return $this->M_transaksi->getRunningIrderUser($idUser);
+	}
 }

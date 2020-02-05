@@ -16,6 +16,7 @@ class Person_model extends CI_Model {
 
 	private function _get_datatables_query($trx)
 	{
+		$this->db->join('produk','detailtransaksi.barcode=produk.barcode');
 		$this->db->where('transaksi',$trx);
 		$this->db->from($this->table);
 

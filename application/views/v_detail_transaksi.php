@@ -60,7 +60,7 @@ include ('basehome/homeheadnavaside.php');
                   <?php
                   $i=1;
                   foreach ($detailtransaksis as $key) {                  	
-                    echo "<tr><td>".$i."</td><td>".$key->namaproduk."</td><td>".$key->hargajual."</td><td>".$key->qty."</td><td>".$key->diskon."</td><td>Rp. ".rupiah($key->totalbayar)."</td></tr>";
+                    echo "<tr><td>".$i."</td><td>".$key->namaproduk."</td><td>Rp. ".rupiah($key->hargajual).",-</td><td>".$key->qty."</td><td>".$key->diskon."</td><td>Rp. ".rupiah($key->totalbayar).",-</td></tr>";
                     $i++;
                   }
                   ?>

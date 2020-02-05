@@ -47,4 +47,12 @@ class M_transaksi extends CI_Model
     $this->db->where('transaksi.kodetransaksi',$trx);
     return  $this->db->get()->result();
   }
+
+  function getRunningOrderUser($idUser){
+    $this->db->select('sum(totalharga) as running');
+    $this->db->from('transaksi');
+    $this->db->where('idkasir',$idUser);
+    $this->db->group_by('idkasir');
+    return $this->db->get()->row_array();
+  }
 }

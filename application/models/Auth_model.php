@@ -3,20 +3,23 @@
 class Auth_model extends CI_Model {    
     
     public function login($name, $password){
+        $this->load->model('M_transaksi');
         $password = sha1($password);
         $this->db->where('username',$name);
         $this->db->where('password',$password);
         $query = $this->db->get('ajax_login_ci');
         if($query->num_rows()==1){
             foreach ($query->result() as $row){
+                $running_target = $this->M_transaksi->getRunningOrderUser($row->id);
                 $data = array(
                 			'iduser' => $row->id,
                             'username'=> $row->username,
                             'namauser'=> $row->nama,
                             'level' => $row->username,
+                            'runningtarget' => $running_target['running'],
                             'targetpenjualan' => $row->targetpenjualan,
                             'logged_in'=>TRUE
-                        );
+                );
             }
         $this->session->set_userdata($data);
         return TRUE;

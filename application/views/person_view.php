@@ -102,7 +102,7 @@ table {
       <span id="shift"></span>
       <ul class="nav nav-pills nav-stacked">
         <li>TARGET PENJUALAN</li>
-        <li><?php echo $this->session->userdata('targetpenjualan'); ?></li>
+        <li><?php echo 'Rp. '.rupiah($this->session->userdata('runningtarget')); ?> from <?php echo 'Rp.'.rupiah($this->session->userdata('targetpenjualan')); ?></li>
       </ul><br>
     </div>
     <div class="col-sm-10">

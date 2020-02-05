@@ -31,7 +31,7 @@ class Eceran extends CI_Controller {
 		foreach ($list as $person) {
 		//	$no++;
 			$row = array();
-			$row[] = $person->barcode;
+			$row[] = $person->namaproduk;
 			$row[] = $person->stok;
 			$row[] = $person->hargajual;
 			$row[] = $person->qty;
