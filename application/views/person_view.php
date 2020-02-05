@@ -123,7 +123,7 @@ table {
              <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Pelanggan</label> </div>
         <div class="form-group">                            
               <div class="col-sm-8" style="padding: 1px">
-                <input name="namapelanggan" placeholder="Pelanggan" id="namapelanggan" class="form-control" type="text">
+                <input name="namapelanggan" placeholder="Pelanggan" id="namapelanggan" class="form-control" type="text" value="-" required="true">
             </div>
         </div>         
         <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Cara Bayar</label> </div>
@@ -139,13 +139,13 @@ table {
             <label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px;width: 100%">Tracking Code</label> </div>
         <div class="form-group">                            
               <div class="col-sm-8" style="padding: 1px">
-                <input name="tipedo" placeholder="Tracking Code" class="form-control" type="text">
+                <input name="tipedo" placeholder="Tracking Code" class="form-control" type="text" value="-" required="true">
             </div>
         </div> 
         <div class="col-sm-4"><label class="control-label col-md-2" style="padding-top: 8px; padding-left: 1px">Keterangan</label> </div>
         <div class="form-group">                            
               <div class="col-sm-8" style="padding: 1px">
-                <input name="keterangan" placeholder="Keterangan" class="form-control" type="text">
+                <input name="keterangan" placeholder="Keterangan" class="form-control" type="text" value="-" required>
             </div>
         </div> 
                              &nbsp &nbsp &nbsp <input type="hidden" name="totalbayarnonformat" id="totalbayarnonformat">   <input type="hidden" name="idkasir" id="idkasir" value="<?php echo $this->session->userdata('iduser'); ?>">   
@@ -309,29 +309,6 @@ $(document).ready(function() {
 
     });
 
-    //datepicker
-    $('.datepicker').datepicker({
-        autoclose: true,
-        format: "yyyy-mm-dd",
-        todayHighlight: true,
-        orientation: "top auto",
-        todayBtn: true,
-        todayHighlight: true,  
-    });
-
-    //set input/textarea/select event when change value, remove class error and remove text help block 
-    $("input").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("textarea").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("select").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
 
 });
 
@@ -737,7 +714,7 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
     $("body").keydown(function(e){
          //well you need keep on mind that your browser use some keys 
          //to call some function, so we'll prevent this
-         e.preventDefault();
+         preventDefault();
 
          //now we caught the key code, yabadabadoo!!
          var keyCode = e.keyCode || e.which;
@@ -748,7 +725,7 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
          }
          //your keyCode contains the key code, F1 to F12 
          //is among 112 and 123. Just it.
-         console.log(keyCode);       
+         //console.log(keyCode);       
     });
 });
      
