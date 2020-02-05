@@ -24,9 +24,7 @@ include ('basehome/homeheadnavaside.php');
           <!-- /.card -->
           <div class="card">
             <div class="card-header">
-              <button type="button" class="btn btn-info btn-sm" onclick="location.href='<?php echo base_url('supplier/insert'); ?>'";>
-                  INSERT
-                </button><!-- hide button worked
+              <!-- hide button worked
                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl">
                   INSERT
                 </button>
@@ -65,7 +63,7 @@ include ('basehome/homeheadnavaside.php');
                   <?php
                   $i=1;
                   foreach ($transaksis as $key) {                  	
-                    echo "<tr><td>".$i."</td><td>".$key->kodetransaksi."</td><td>".$key->pelanggan."</td><td>".$key->carabayar."</td><td>".$key->tipedo."</td><td>Rp. ".number_format($key->totalharga)."</td><td>".$key->nama."</td><td>".$key->keterangan."</td><td><a href='".base_url('transaksi/lihatdetailtrxbyid/').$key->kodetransaksi."'>LIHAT DETAIL</a></td></tr>";
+                    echo "<tr><td>".$i."</td><td>".$key->kodetransaksi."</td><td>".$key->pelanggan."</td><td>".$key->carabayar."</td><td>".$key->tipedo."</td><td>Rp. ".rupiah($key->totalharga)."</td><td>".$key->nama."</td><td>".$key->keterangan."</td><td><a href='".base_url('transaksi/lihatdetailtrxbyid/').$key->kodetransaksi."'>DETAIL</a></td></tr>";
                     $i++;
                   }
                   ?>

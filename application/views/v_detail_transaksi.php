@@ -24,9 +24,7 @@ include ('basehome/homeheadnavaside.php');
           <!-- /.card -->
           <div class="card">
             <div class="card-header">
-              <button type="button" class="btn btn-info btn-sm" onclick="location.href='<?php echo base_url('supplier/insert'); ?>'";>
-                  INSERT
-                </button><!-- hide button worked
+              <!-- hide button worked
                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-xl">
                   INSERT
                 </button>
@@ -47,7 +45,7 @@ include ('basehome/homeheadnavaside.php');
 
             <!-- /.card-header -->
             <div class="card-body" style="padding: 0.5rem">
-              <table id="example1" class="table table-bordered table-striped table-hover" style="line-height: 1px">
+              <table id="tabledetailtrx" class="table table-bordered table-striped table-hover" style="line-height: 1px">
                 <thead>
                 <tr>
                   <th>No</th>
@@ -62,7 +60,7 @@ include ('basehome/homeheadnavaside.php');
                   <?php
                   $i=1;
                   foreach ($detailtransaksis as $key) {                  	
-                    echo "<tr><td>".$i."</td><td>".$key->namaproduk."</td><td>".$key->hargajual."</td><td>".$key->qty."</td><td>".$key->diskon."</td><td>Rp. ".number_format($key->totalbayar)."</td></tr>";
+                    echo "<tr><td>".$i."</td><td>".$key->namaproduk."</td><td>".$key->hargajual."</td><td>".$key->qty."</td><td>".$key->diskon."</td><td>Rp. ".rupiah($key->totalbayar)."</td></tr>";
                     $i++;
                   }
                   ?>
