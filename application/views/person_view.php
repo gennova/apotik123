@@ -244,6 +244,35 @@ table {
 
 
     </div>
+          <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">SIMPAN TRANSAKSI PENJUALAN</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label class="control-label" style="width: 100%;padding-top: 5px">KODE TRX</label> </div>
+             <div class="col-sm-8" style="padding: 1px">
+                <input name="kodetransaksinya" id="trxcode" placeholder="Pelanggan" class="form-control" type="text"  value="<?php echo $invoice;?>" readonly>
+               </div>
+               </div>
+            </div>
+              
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
@@ -705,7 +734,22 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
     else{
          document.getElementById('shift').innerHTML ="SHIFT MALAM";
     }
-    
+    $("body").keydown(function(e){
+         //well you need keep on mind that your browser use some keys 
+         //to call some function, so we'll prevent this
+         e.preventDefault();
+
+         //now we caught the key code, yabadabadoo!!
+         var keyCode = e.keyCode || e.which;
+         if(keyCode==118){
+            jQuery.noConflict(); 
+            $('#modal-default').modal('show');
+            console.log('show modal');
+         }
+         //your keyCode contains the key code, F1 to F12 
+         //is among 112 and 123. Just it.
+         console.log(keyCode);       
+    });
 });
      
 </script>
