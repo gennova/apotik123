@@ -271,6 +271,7 @@ class M_produk extends CI_Model{
 		$this->db->where('barcode', $barcodenya);
 		$this->db->update('hargaproduk', $data_harga);
         //return $this->db->insert($this->_table, $this);
+        $this->db->where('barcode', $barcodenya);
         $this->db->update('stokbarang',$data_stok); //masukkan stok awal barang saat input produk
     }
 

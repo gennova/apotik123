@@ -27,7 +27,7 @@ class Auth extends CI_Controller{
              
             //call the model for auth
             if( $this->Auth_model->login($username, $password)==1){
-            	//echo "SUKSES";
+            echo "SUKSES";
             	//redirect('home');
             $level = $this->session->userdata('level');
 			if ($level=="admin") {

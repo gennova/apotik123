@@ -167,7 +167,7 @@ table {
                 <div class="form-body">
                     <div ng-app="myApp" ng-controller="myCtrl" ng-init="stok='1';jumlah='1';diskonnya='0'">                       
                         <div class="form-group">                            
-                            <div class="col-md-3" style="padding: 1px">
+                            <div class="col-md-4" style="padding: 1px">
                             <select name="firstName" id="barcodenya" class="form-control select2">
                             <option value="0">-PILIH-</option>
                             <?php foreach($data->result() as $row):?>
@@ -197,7 +197,7 @@ table {
                                <button type="button" id="btnSave" onclick="minus()" class="btn btn-primary" tabindex="-1">-</button> <button type="button" id="btnSave" onclick="added()" class="btn btn-primary" tabindex="-1">+</button>
                             </div>
                         <div class="form-group">                            
-                            <div class="col-md-2" style="padding: 1px">
+                            <div class="col-md-1" style="padding: 1px">
                                 <input name="address" id="diskoninput" placeholder="Diskon" class="form-control" type="text" ng-model="diskonnya" onmousedown="mouseDown()" onmouseup="mouseUp()" onmouseout="proses()" onfocus="proses()" onchange="proses()">                               
                             </div>
                         </div>
