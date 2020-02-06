@@ -10,6 +10,8 @@ class Produk extends CI_Controller{
 		$this->load->model('M_kemasan');
 		$this->load->model('M_hargaproduk');
 		$this->load->model('M_golonganmargin');
+		$this->load->model('M_kategori');
+		$this->load->model("M_transaksi");
         $this->load->library('form_validation');
         $this->load->helper('rupiah_helper');
 	}
@@ -47,6 +49,8 @@ class Produk extends CI_Controller{
 		$data["produks"] = $this->M_produk->getProdukByBarcode($produk_id);
 		$data["hargaproduk"] = $this->M_hargaproduk->getByBarcode($data['produks']['barcode']);	
 		$data['golonganmargins'] = $this->M_golonganmargin->getALlGolonganMargin();
+		$data['kategoris'] = $this->M_kategori->getAllKategori();
+		$data['subkategoris'] = $this->M_kategori->getAllSubKategori();
 		$this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->form_validation->set_rules($product->rules());
@@ -94,5 +98,20 @@ class Produk extends CI_Controller{
 	function get_kemasanproduk_bybarcode($barcode){		
 		$data=$this->M_produk->get_kemasanbybarcode($barcode);
 		echo json_encode($data);
+	}
+
+	function getTotalProduk(){
+		$data =$this->M_produk->getTotalProduk();	
+		$dataTrx = $this->M_transaksi->getTotalTransaksi();
+		$myObj = new stdClass();
+		foreach ($data as $key) {
+			//echo $key->totalproduk;
+			$myObj->totalproduk = $key->totalproduk;
+		}
+		foreach ($dataTrx as $key) {
+			//echo $key->totalproduk;
+			$myObj->totaltransaksi = $key->totaltransaksi;
+		}
+		echo json_encode($myObj);
 	}
 }

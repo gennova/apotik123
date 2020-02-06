@@ -34,9 +34,9 @@ include ('basehome/homeheadnavaside.php');
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-calendar-week"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Today Orders</span>
-                <span class="info-box-number">
-                  100
+                <span class="info-box-text">Total Produk</span>
+                <span class="info-box-number" id="totalprodukid">
+                  
                   <small></small>
                 </span>
               </div>
@@ -67,8 +67,8 @@ include ('basehome/homeheadnavaside.php');
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Sales / Month</span>
-                <span class="info-box-number">7600</span>
+                <span class="info-box-text">Total Order Penjualan</span>
+                <span class="info-box-number" id="totalorderid"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -716,7 +716,7 @@ include ('basehome/homeheadnavaside.php');
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-          <script>
+<script>
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -724,7 +724,7 @@ xmlhttp.onreadystatechange = function() {
     document.getElementById("demo").innerHTML = myObj.name_apotik;
   }
 };
-xmlhttp.open("GET", "http://localhost/apotik/state", true);
+xmlhttp.open("GET", "http://localhost/apotik123/state", true);
 xmlhttp.send();
 </script>
 <?php
@@ -732,3 +732,19 @@ include ('basehome/homefooter.php');
 ?>
 </body>
 </html>
+
+<script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        //console.log("total data "+myObj.totalproduk);
+        document.getElementById('totalprodukid').innerHTML=myObj.totalproduk;
+        document.getElementById('totalorderid').innerHTML=myObj.totaltransaksi;
+        console.log("total data "+myObj.totaltransaksi);
+        
+    }
+  };
+xmlhttp.open("GET", "http://localhost/apotik123/produk/getTotalProduk", true);
+xmlhttp.send();
+</script>

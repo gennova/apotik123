@@ -161,10 +161,10 @@ include ('basehome/homeheadnavaside.php');
                         </select>   
                   </div>
                   <div class="col-4">
-                    Kemasan Lain <br>
+                    Kemasan 2 <br>
                         <select class="form-control form-control-sm" name="kemasan2">
                           <?php foreach ($kemasan as $item) { 
-                            if($item->id == $produks['isi2']){
+                            if($item->id == $produks['kemasan2']){
                               echo '<option value="'.$item->id.'" selected>'.$item->namakemasan.'</option>';
                             }else{
                           echo '<option value="'.$item->id.'">'.$item->namakemasan.'</option>';
@@ -172,10 +172,10 @@ include ('basehome/homeheadnavaside.php');
                         </select>   
                   </div>
                   <div class="col-4">
-                    Kemasan Lain <br>
+                    Kemasan 3 <br>
                         <select class="form-control form-control-sm" name="kemasan3">
                           <?php foreach ($kemasan as $item) { 
-                            if($item->id == $produks['isi3']){
+                            if($item->id == $produks['kemasan3']){
                               echo '<option value="'.$item->id.'" selected>'.$item->namakemasan.'</option>';
                             }else {
                           echo '<option value="'.$item->id.'">'.$item->namakemasan.'</option>';} }?>
@@ -232,30 +232,22 @@ include ('basehome/homeheadnavaside.php');
                   <div class="col-4">
                     Kategori <br>
                         <select class="form-control form-control-sm" name="kategori">
-                          <?php
-                          for($i=1;$i<6;$i++){
-                            if($i == $produks['kategori']){
-                              echo '<option value="'.$i.'" selected>option '.$i.'</option>';
+                          <?php foreach ($kategoris as $item) { 
+                            if($item->kategori_id == $produks['kategori']){
+                              echo '<option value="'.$item->kategori_id.'" selected>'.$item->kategori_nama.'</option>';
                             }else {
-                               echo '<option value="'.$i.'">option '.$i.'</option>';
-                            }
-                          }
-                          ?>
+                          echo '<option value="'.$item->kategori_id.'">'.$item->kategori_nama.'</option>';} }?>
                         </select>   
                   </div>
                   <div class="col-4">
                     Sub Kategori <br>
                         <select class="form-control form-control-sm" name="subkategori">
-                          <?php
-                          for($i=1;$i<6;$i++){
-                            if($i == $produks['subkategori']){
-                              echo '<option value="'.$i.'" selected>option '.$i.'</option>';
+                          <?php foreach ($subkategoris as $item) { 
+                            if($item->subkategori_id == $produks['subkategori']){
+                              echo '<option value="'.$item->subkategori_id.'" selected>'.$item->subkategori_nama.'</option>';
                             }else {
-                               echo '<option value="'.$i.'">option '.$i.'</option>';
-                            }
-                          }
-                          ?>
-                        </select>   
+                          echo '<option value="'.$item->subkategori_id.'">'.$item->subkategori_nama.'</option>';} }?>
+                        </select>    
                   </div>
                 </div>  <!-- end class row -->               
               </div>

@@ -292,4 +292,9 @@ class M_produk extends CI_Model{
         return $hasil->result();
     }
 
+    function getTotalProduk(){
+        $query = $this->db->query("select count('barcode') as totalproduk from produk");
+        return $query->result();
+    }
+
 }

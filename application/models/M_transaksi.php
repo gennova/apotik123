@@ -55,4 +55,9 @@ class M_transaksi extends CI_Model
     $this->db->group_by('idkasir');
     return $this->db->get()->row_array();
   }
+
+  function getTotalTransaksi(){
+        $query = $this->db->query("select count('kodetransaksi') as totaltransaksi from transaksi");
+        return $query->result();
+    }
 }

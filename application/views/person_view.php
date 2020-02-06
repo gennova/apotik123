@@ -658,7 +658,7 @@ $(document).on("keydown", ":input:not(textarea)", function(event) {
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#barcodenya').change(function(){
+        $('#barcodenya').change(function(){ 
             var id=$(this).val();
             console.log("ID "+id);
             $.ajax({
