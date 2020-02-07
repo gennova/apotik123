@@ -150,7 +150,7 @@ table {
         </div> 
                              &nbsp &nbsp &nbsp <input type="hidden" name="totalbayarnonformat" id="totalbayarnonformat">   <input type="hidden" name="idkasir" id="idkasir" value="<?php echo $this->session->userdata('iduser'); ?>">   
         <div class="col-md-3" style="padding: 0px;padding-left: 20px">
-            <button type="submit" id="btnSave" class="btn btn-success">&nbsp &nbsp &nbsp &nbsp Save&nbsp &nbsp &nbsp &nbsp</button>            
+            <button type="submit" id="btnSave" class="btn btn-success" onclick="onClickPrint()">&nbsp &nbsp &nbsp &nbsp Save&nbsp &nbsp &nbsp &nbsp</button>            
         </div>
         </div>  
         
@@ -194,7 +194,7 @@ table {
                             </div>                            
                         </div>
                         <div class="col-md-1" style="padding: 1px">
-                               <button type="button" id="btnSave" onclick="minus()" class="btn btn-primary" tabindex="-1">-</button> <button type="button" id="btnSave" onclick="added()" class="btn btn-primary" tabindex="-1">+</button>
+                               <button type="button" id="btnMinus" onclick="minus()" class="btn btn-primary" tabindex="-1">-</button> <button type="button" id="btnPlus" onclick="added()" class="btn btn-primary" tabindex="-1">+</button>
                             </div>
                         <div class="form-group">                            
                             <div class="col-md-1" style="padding: 1px">
@@ -208,13 +208,12 @@ table {
                         </div>
 
                             <div class="col-md-1" style="padding: 1px">
-                               <button type="button" id="btnSave" onclick="save()" onkeydown="save()" class="btn btn-primary">ADD</button>
+                               <button type="button" id="btnADD" onclick="save()" onkeydown="save()" class="btn btn-primary">ADD</button>
                             </div>
                         </div>  <!-- end Angular App controller -->
                     </div>                   
                 </div>
-                    <!-- <input type="hidden" value="" name="id"/> -->
-                    
+                    <!-- <input type="hidden" value="" name="id"/> -->                   
 
                 </form>
          <div class="col-sm-12">
@@ -749,9 +748,69 @@ window.onload = function () {
         $('#barcodenya').click()
         document.getElementById('barcodenya').select();
         //$('#barcodenya').val("10013");
-        //$("#barcodenya").focus(); 
-        
+        //$("#barcodenya").focus();         
 };
+console.log('data printing, loop all data detail');
+var printer = new Recta('2900917895', '1811');
+  function onClickPrint () {
+    console.log('Do This');
+    printer.open().then(function () {
+      printer.align('left')
+        .text('Hello World !!')
+        .bold(true)
+        .text('This is bold text')
+        .bold(false)
+        .underline(true)
+        .text('This is underline text n the blik of an eyer shadow')
+        .underline(false)
+        .barcode('UPC-A', '123456789012')
+        .cut()
+        .print()
+    })
+  }
+$.ajax({
+            type  : 'GET',
+            url   : 'http://localhost/apotik123/eceran/show',
+            async : false,
+            dataType : 'json',
+            success : function(data){
+                var html = '';
+                console.log(data[0].namaproduk.substring(0, 15)+"   "+formatRupiah(data[0].totalbayar,'Rp. '));               
+            }
+        }); 
 
+function formatRupiah(angka, prefix){
+    var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    split           = number_string.split(','),
+    sisa            = split[0].length % 3,
+    rupiah          = split[0].substr(0, sisa),
+    ribuan          = split[0].substr(sisa).match(/\d{3}/gi); 
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if(ribuan){
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+    }
+ 
+    rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+}
 </script>
 </html>
+
+<script type="text/javascript">
+    console.log('data printing');
+    $(document).ready().function(){
+        function listApoteker(){        
+        $.ajax({
+            type  : 'GET',
+            url   : 'http://localhost/apotik123/eceran/show',
+            async : false,
+            dataType : 'json',
+            success : function(data){
+                var html = '';
+                console.log(data[0].barcode);               
+            }
+        });     
+    }
+    }
+</script>

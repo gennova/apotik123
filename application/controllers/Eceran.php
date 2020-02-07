@@ -155,4 +155,9 @@ class Eceran extends CI_Controller {
 		}
 	}
 
+	function show(){
+		$data=$this->person->trxlistbycode();
+		echo json_encode($data);
+	}
+
 }

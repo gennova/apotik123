@@ -110,5 +110,11 @@ class Person_model extends CI_Model {
 		$this->db->delete($this->table);
 	}
 
+	function trxlistbycode(){
+		$this->db->get('detailtransaksi');
+		$this->db->join('produk','detailtransaksi.barcode=produk.barcode');
+		return $this->db->get('detailtransaksi')->result();
+	}
+
 
 }

@@ -12,6 +12,7 @@ class State extends CI_Controller{
 		$myObj->name_apotik = "Indonesia Sehat";
 		$myObj->alamat = "Semarang";
 		$myObj->city = "New York";
+		$myObj->kontak = array("Volvo", "BMW", "Toyota");
 		$myJSON = json_encode($myObj);
 		echo $myJSON;
 
